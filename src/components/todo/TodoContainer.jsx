@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { getTodoListAPI } from '../../lib/api/todo';
-import TodoList from './TodoList';
-import TodoListAdd from './TodoListAdd';
-import TodoListHeader from './TodoListHeader';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { getTodoListAPI } from "../../lib/api/todo";
+import TodoList from "./TodoList";
+import TodoListAdd from "./TodoListAdd";
+import TodoListHeader from "./TodoListHeader";
 
-const TodoContainer = props => {
+const TodoContainer = (props) => {
   const navigate = useNavigate();
   const [todoList, setTodoList] = useState(null);
 
@@ -17,7 +17,7 @@ const TodoContainer = props => {
   const getTodoList = () => {
     getTodoListAPI({
       fulfilledAction: setTodoList,
-      rejectAction: () => navigate('/'),
+      rejectAction: () => navigate("/"),
     });
   };
 

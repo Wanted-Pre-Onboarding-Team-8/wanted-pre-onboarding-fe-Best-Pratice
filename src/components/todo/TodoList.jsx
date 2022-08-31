@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { palette } from '../../style/palette';
-import TodoListItem from './TodoListItem';
+import styled from "styled-components";
+import { palette } from "../../style/palette";
+import TodoListItem from "./TodoListItem";
 
 const TodoList = ({ todoList, getTodoList }) => {
   return (
     <TodoListWrapper>
-      {todoList.map(item => {
+      {todoList.map((item) => {
         return (
           <TodoListItem
             key={item.id}

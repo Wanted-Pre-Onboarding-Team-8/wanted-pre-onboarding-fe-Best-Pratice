@@ -1,5 +1,5 @@
-import axios from 'axios';
-import baseAPI from '.';
+import axios from "axios";
+import baseAPI from ".";
 
 export const loginAPI = (data, actions) => {
   const {
@@ -10,11 +10,11 @@ export const loginAPI = (data, actions) => {
 
   pendingAction();
   baseAPI
-    .post('/auth/signin', data)
-    .then(res => {
+    .post("/auth/signin", data)
+    .then((res) => {
       fulfilledAction(res.data);
     })
-    .catch(err => {
+    .catch((err) => {
       authRejectAction(err, rejectAction);
     });
 };
@@ -28,11 +28,11 @@ export const registerAPI = (data, actions) => {
 
   pendingAction();
   baseAPI
-    .post('/auth/signup', data)
-    .then(res => {
+    .post("/auth/signup", data)
+    .then((res) => {
       fulfilledAction();
     })
-    .catch(err => {
+    .catch((err) => {
       authRejectAction(err, rejectAction);
     });
 };

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { palette } from '../../style/palette';
+import React from "react";
+import styled from "styled-components";
+import { palette } from "../../style/palette";
 
-const TodoListHeader = props => {
+const TodoListHeader = (props) => {
   return (
     <Header>
       <h2>TODOLIST</h2>

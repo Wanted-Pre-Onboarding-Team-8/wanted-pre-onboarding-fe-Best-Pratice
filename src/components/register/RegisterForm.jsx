@@ -1,50 +1,50 @@
-import React, { useMemo, useState } from 'react';
-import styled from 'styled-components';
-import { validateEmail, validatePW } from '../../lib/util/validation';
-import Button from '../common/Button';
-import Input from '../common/Input';
+import React, { useMemo, useState } from "react";
+import styled from "styled-components";
+import { validateEmail, validatePW } from "../../lib/util/validation";
+import Button from "../common/Button";
+import Input from "../common/Input";
 
 const RegisterForm = ({ submitButtonText, isLoading, submitAction }) => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [formDataValidation, setFormDataValidation] = useState({
-    email: 'idle',
-    password: 'idle',
+    email: "idle",
+    password: "idle",
   });
   const registerDisabled = useMemo(() => {
     return (
-      formDataValidation.email !== 'valid' ||
-      formDataValidation.password !== 'valid' ||
+      formDataValidation.email !== "valid" ||
+      formDataValidation.password !== "valid" ||
       isLoading
     );
   }, [formDataValidation.email, formDataValidation.password, isLoading]);
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     submitAction(formData);
   };
 
-  const onChangeEmail = e => {
+  const onChangeEmail = (e) => {
     setFormData({
       ...formData,
       email: e.target.value,
     });
     setFormDataValidation({
       ...formDataValidation,
-      email: 'idle',
+      email: "idle",
     });
   };
 
-  const onChangePassword = e => {
+  const onChangePassword = (e) => {
     setFormData({
       ...formData,
       password: e.target.value,
     });
     setFormDataValidation({
       ...formDataValidation,
-      password: 'idle',
+      password: "idle",
     });
   };
 
