@@ -33,7 +33,7 @@ const RegisterForm = ({ submitButtonText, isLoading, submitAction }) => {
     });
     setFormDataValidation({
       ...formDataValidation,
-      email: validateEmail(formData.email),
+      email: validateEmail(e.target.value),
     });
   };
 
@@ -44,7 +44,7 @@ const RegisterForm = ({ submitButtonText, isLoading, submitAction }) => {
     });
     setFormDataValidation({
       ...formDataValidation,
-      password: validatePW(formData.password),
+      password: validatePW(e.target.value),
     });
   };
 
