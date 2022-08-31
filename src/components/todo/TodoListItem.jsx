@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { deleteTodoListAPI, editTodoListAPI } from '../../lib/api/todo';
@@ -9,10 +9,15 @@ const TodoListItem = ({ listItem: { id, todo, isCompleted }, getTodoList }) => {
   const navigate = useNavigate();
   const [isEditMode, setIsEditMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isEmptyInput, setIsEmptyInput] = useState(false);
   const [editValue, setEditValue] = useState({
     todo,
     isCompleted,
   });
+
+  useEffect(() => {
+    editValue.todo ? setIsEmptyInput(false) : setIsEmptyInput(true);
+  }, [editValue.todo]);
 
   const onChangeEditInput = e => {
     setEditValue({
@@ -100,7 +105,11 @@ const TodoListItem = ({ listItem: { id, todo, isCompleted }, getTodoList }) => {
         <div>
           {isEditMode ? (
             <>
-              <button type="button" onClick={onClickEditConfirm}>
+              <button
+                type="button"
+                onClick={onClickEditConfirm}
+                disabled={isEmptyInput}
+              >
                 완료
               </button>
               <button type="button" onClick={onClickEditCancel}>

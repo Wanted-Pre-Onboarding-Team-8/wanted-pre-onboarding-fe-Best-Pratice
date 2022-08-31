@@ -17,6 +17,9 @@ const GlobalStyle = createGlobalStyle`
         background: transparent;
         border: none;
         cursor: pointer;
+        :disabled {
+            cursor: not-allowed;
+        }
     }
 `;
 
