@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { registerAPI } from '../../lib/api/auth';
+import { getStorageItem } from '../../lib/util/storage';
 import RegisterForm from './RegisterForm';
 
 const RegisterContainer = props => {
@@ -9,7 +10,7 @@ const RegisterContainer = props => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    window.localStorage.getItem('token') && navigate('/todo');
+    getStorageItem('token') && navigate('/todo');
   }, []);
 
   const submitAction = formData => {
