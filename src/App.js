@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import Layout from "./components/common/Layout";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Todo from "./pages/Todo";
+import React from 'react';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import Layout from './components/common/Layout';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Todo from './pages/Todo';
 
 function App() {
   return (

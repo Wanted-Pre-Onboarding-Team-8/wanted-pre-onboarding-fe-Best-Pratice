@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { registerAPI } from "../../lib/api/auth";
-import RegisterForm from "./RegisterForm";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { registerAPI } from '../../lib/api/auth';
+import RegisterForm from './RegisterForm';
 
-const RegisterContainer = (props) => {
+const RegisterContainer = props => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    window.localStorage.getItem("token") && navigate("/todo");
+    window.localStorage.getItem('token') && navigate('/todo');
   }, []);
 
-  const submitAction = (formData) => {
+  const submitAction = formData => {
     registerAPI(formData, {
       pendingAction: () => setIsLoading(true),
       fulfilledAction: () => {
         setIsLoading(false);
-        navigate("/");
+        navigate('/');
       },
       rejectAction: () => setIsLoading(false),
     });
@@ -27,7 +27,7 @@ const RegisterContainer = (props) => {
     <Content>
       <h2>회원가입</h2>
       <RegisterForm
-        submitButtonText={isLoading ? "처리중" : "회원가입"}
+        submitButtonText={isLoading ? '처리중' : '회원가입'}
         isLoading={isLoading}
         submitAction={submitAction}
       />

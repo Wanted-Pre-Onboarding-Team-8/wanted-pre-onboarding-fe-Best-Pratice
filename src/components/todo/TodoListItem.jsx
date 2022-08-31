@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { deleteTodoListAPI, editTodoListAPI } from "../../lib/api/todo";
-import { palette } from "../../style/palette";
-import ListItemSkeleton from "./ListItemSkeleton";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { deleteTodoListAPI, editTodoListAPI } from '../../lib/api/todo';
+import { palette } from '../../style/palette';
+import ListItemSkeleton from './ListItemSkeleton';
 
 const TodoListItem = ({ listItem: { id, todo, isCompleted }, getTodoList }) => {
   const navigate = useNavigate();
@@ -14,14 +14,14 @@ const TodoListItem = ({ listItem: { id, todo, isCompleted }, getTodoList }) => {
     isCompleted,
   });
 
-  const onChangeEditInput = (e) => {
+  const onChangeEditInput = e => {
     setEditValue({
       ...editValue,
       todo: e.target.value,
     });
   };
 
-  const onChangeEditCheck = (e) => {
+  const onChangeEditCheck = e => {
     setEditValue({
       ...editValue,
       isCompleted: e.target.checked,
@@ -55,7 +55,7 @@ const TodoListItem = ({ listItem: { id, todo, isCompleted }, getTodoList }) => {
           setIsLoading(false);
           setIsEditMode(false);
         },
-        rejectAction: () => navigate("/"),
+        rejectAction: () => navigate('/'),
       }
     );
   };
@@ -69,7 +69,7 @@ const TodoListItem = ({ listItem: { id, todo, isCompleted }, getTodoList }) => {
           getTodoList();
           setIsLoading(false);
         },
-        rejectAction: () => navigate("/"),
+        rejectAction: () => navigate('/'),
       }
     );
   };
@@ -139,9 +139,9 @@ const Todo = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    text-decoration: ${({ isCompleted }) => isCompleted && "line-through"};
+    text-decoration: ${({ isCompleted }) => isCompleted && 'line-through'};
     text-decoration-color: ${({ isCompleted }) => isCompleted && palette.red1};
-    text-decoration-thickness: ${({ isCompleted }) => isCompleted && "3px"};
+    text-decoration-thickness: ${({ isCompleted }) => isCompleted && '3px'};
   }
 
   > div {

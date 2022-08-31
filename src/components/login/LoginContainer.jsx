@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import baseAPI from "../../lib/api";
-import { loginAPI } from "../../lib/api/auth";
-import Button from "../common/Button";
-import RegisterForm from "../register/RegisterForm";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import baseAPI from '../../lib/api';
+import { loginAPI } from '../../lib/api/auth';
+import Button from '../common/Button';
+import RegisterForm from '../register/RegisterForm';
 
-const LoginContainer = (props) => {
+const LoginContainer = props => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    window.localStorage.getItem("token") && navigate("/todo");
+    window.localStorage.getItem('token') && navigate('/todo');
   }, []);
 
-  const submitAction = (formData) => {
+  const submitAction = formData => {
     loginAPI(formData, {
       pendingAction: () => setIsLoading(true),
-      fulfilledAction: (data) => {
+      fulfilledAction: data => {
         setIsLoading(false);
-        window.localStorage.setItem("token", data.access_token);
+        window.localStorage.setItem('token', data.access_token);
         baseAPI.defaults.headers.common.Authorization = `Bearer ${data.access_token}`;
-        navigate("/todo");
+        navigate('/todo');
       },
       rejectAction: () => setIsLoading(false),
     });
   };
 
   const onClickMoveRegister = () => {
-    navigate("/register");
+    navigate('/register');
   };
 
   return (
     <Content>
       <h2>로그인</h2>
       <RegisterForm
-        submitButtonText={isLoading ? "로그인중" : "로그인"}
+        submitButtonText={isLoading ? '로그인중' : '로그인'}
         isLoading={isLoading}
         submitAction={submitAction}
       />

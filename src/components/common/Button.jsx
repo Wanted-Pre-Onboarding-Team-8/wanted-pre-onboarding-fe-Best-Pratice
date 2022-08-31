@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { palette } from "../../style/palette";
+import React from 'react';
+import styled from 'styled-components';
+import { palette } from '../../style/palette';
 
-const Button = ({ text, disabled, type = "button", onClick }) => {
+const Button = ({ text, disabled, type = 'button', onClick }) => {
   return (
     <AuthButton type={type} onClick={onClick} disabled={disabled}>
       {text}

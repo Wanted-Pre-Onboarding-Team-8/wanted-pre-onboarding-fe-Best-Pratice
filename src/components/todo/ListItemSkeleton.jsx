@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import animations from "../../style/animation";
-import { palette } from "../../style/palette";
+import React from 'react';
+import styled from 'styled-components';
+import animations from '../../style/animation';
+import { palette } from '../../style/palette';
 
-const ListItemSkeleton = (props) => {
+const ListItemSkeleton = props => {
   return <Skeleton />;
 };
 

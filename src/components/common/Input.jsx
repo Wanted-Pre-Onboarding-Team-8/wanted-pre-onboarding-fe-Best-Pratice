@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import { palette } from "../../style/palette";
+import React from 'react';
+import styled from 'styled-components';
+import { palette } from '../../style/palette';
 
-const Input = ({ type = "text", validation, validationMessage, ...rest }) => {
+const Input = ({ type = 'text', validation, validationMessage, ...rest }) => {
   return (
-    <InputWrapper isValid={validation === "valid"}>
+    <InputWrapper isValid={validation === 'valid'}>
       <input type={type} {...rest} />
-      <span>{validation === "invalid" && validationMessage}</span>
+      <span>{validation === 'invalid' && validationMessage}</span>
     </InputWrapper>
   );
 };

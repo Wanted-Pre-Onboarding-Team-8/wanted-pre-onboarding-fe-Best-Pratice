@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { createTodoListAPI } from "../../lib/api/todo";
-import { palette } from "../../style/palette";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { createTodoListAPI } from '../../lib/api/todo';
+import { palette } from '../../style/palette';
 
 const TodoListAdd = ({ getTodoList }) => {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
-  const onChangeInput = (e) => {
+  const onChangeInput = e => {
     setInputValue(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     createTodoListAPI(
       { todo: inputValue },
       {
         fulfilledAction: () => {
           getTodoList();
-          setInputValue("");
+          setInputValue('');
         },
-        rejectAction: () => navigate("/"),
+        rejectAction: () => navigate('/'),
       }
     );
   };
