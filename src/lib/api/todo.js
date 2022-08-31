@@ -1,5 +1,6 @@
 import axios from 'axios';
 import baseAPI from '.';
+import { removeStorageItem } from '../util/storage';
 
 export const getTodoListAPI = actions => {
   const {
@@ -82,7 +83,7 @@ export const todoRejectAction = (err, redirectAction) => {
   if (axios.isAxiosError(err) && err.response) {
     if ((err.response?.data).statusCode === 401) {
       redirectAction();
-      window.localStorage.removeItem('token');
+      removeStorageItem('token');
     }
   }
 };
