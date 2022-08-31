@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import baseAPI from '../../lib/api';
 import { loginAPI } from '../../lib/api/auth';
+import { getStorageItem, setStorageItem } from '../../lib/util/storage';
 import Button from '../common/Button';
 import RegisterForm from '../register/RegisterForm';
 
@@ -11,7 +12,7 @@ const LoginContainer = props => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    window.localStorage.getItem('token') && navigate('/todo');
+    getStorageItem('token') && navigate('/todo');
   }, []);
 
   const submitAction = formData => {
@@ -19,7 +20,7 @@ const LoginContainer = props => {
       pendingAction: () => setIsLoading(true),
       fulfilledAction: data => {
         setIsLoading(false);
-        window.localStorage.setItem('token', data.access_token);
+        setStorageItem('token', data.access_token);
         baseAPI.defaults.headers.common.Authorization = `Bearer ${data.access_token}`;
         navigate('/todo');
       },
