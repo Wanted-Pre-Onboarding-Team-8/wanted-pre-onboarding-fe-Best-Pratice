@@ -33,7 +33,7 @@ const RegisterForm = ({ submitButtonText, isLoading, submitAction }) => {
     });
     setFormDataValidation({
       ...formDataValidation,
-      email: 'idle',
+      email: validateEmail(formData.email),
     });
   };
 
@@ -42,20 +42,6 @@ const RegisterForm = ({ submitButtonText, isLoading, submitAction }) => {
       ...formData,
       password: e.target.value,
     });
-    setFormDataValidation({
-      ...formDataValidation,
-      password: 'idle',
-    });
-  };
-
-  const checkEmail = () => {
-    setFormDataValidation({
-      ...formDataValidation,
-      email: validateEmail(formData.email),
-    });
-  };
-
-  const checkPassword = () => {
     setFormDataValidation({
       ...formDataValidation,
       password: validatePW(formData.password),
@@ -69,7 +55,6 @@ const RegisterForm = ({ submitButtonText, isLoading, submitAction }) => {
         placeholder="이메일"
         value={formData.email}
         onChange={onChangeEmail}
-        onBlur={checkEmail}
         validation={formDataValidation.email}
         validationMessage="이메일 형식을 제대로 입력해주세요."
       />
@@ -78,7 +63,6 @@ const RegisterForm = ({ submitButtonText, isLoading, submitAction }) => {
         placeholder="비밀번호 (8자리 이상)"
         value={formData.password}
         onChange={onChangePassword}
-        onBlur={checkPassword}
         validation={formDataValidation.password}
         validationMessage="비밀번호는 8자리 이상입니다."
       />
